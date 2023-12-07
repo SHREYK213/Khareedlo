@@ -1,0 +1,29 @@
+<div class="search-filter-container" >
+    <form [formGroup]="searchForm" >
+      <div
+        class="search-filter-container-field search-input form-field"
+        style="border: none !important;"
+      >
+        <div class="icon">
+          <mat-icon
+            class="search-icon"
+            matPrefix
+            >search</mat-icon
+          >
+          <input
+            matInput
+            class="search-filter-container-input"
+            style="border: none !important;"
+            formControlName="searchInput"
+            placeholder="Search"
+            maxlength="25"
+          />
+          <mat-icon
+            class="clear"
+            matSuffix
+            >clear</mat-icon
+          >
+        </div>
+      </div>
+    </form>
+  </div>

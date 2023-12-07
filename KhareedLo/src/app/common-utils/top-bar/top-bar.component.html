@@ -1,0 +1,67 @@
+<mat-toolbar color="primary" class="mat-toolbar">
+  <mat-toolbar-row>
+    <a class="a-tag" routerLink="/">
+      <img
+        class="logo"
+        src="../../../assets/img/logo.jpeg"
+        alt="logo"
+        srcset=""
+      />
+    </a>
+    <button
+      mat-icon-button
+      class="toolbar-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="topbar-title">
+      <span>KhareedLo</span>
+    </div>
+    <span class="search-bar-spacer"></span>
+    
+    <app-search-bar></app-search-bar>
+
+    <span class="tool-bar-spacer"></span>
+
+    <!-- Login button -->
+    <span class="login-span">
+      <button mat-raised-button class="login-btn">Login</button>
+    </span>
+    <!-- fav and cart button -->
+    <span class="fav-span">
+      <button mat-icon-button aria-label="favorite" class="favorite_icon">
+        <mat-icon>favorite_icon</mat-icon>
+      </button>
+    </span>
+    <span class="cart-span">
+      <button
+        mat-icon-button
+        aria-label="shopping_cart"
+        class="shopping_cart_icon"
+      >
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </span>
+  </mat-toolbar-row>
+  <mat-divider class="mid-divider"></mat-divider>
+  <mat-toolbar-row class="lower-navbar">
+    <span *ngFor="let category of categories" class="category">
+      <h1>{{ category.name }}</h1>
+      <button
+        mat-icon-button
+        aria-label="expand_more"
+        class="expand_more_icon"
+        (click)="toggleCategory(category)"
+      >
+        <mat-icon class="expand-icon-class">{{
+          category.expanded ? "expand_less" : "expand_more"
+        }}</mat-icon>
+      </button>
+      <div *ngIf="category.expanded">
+        <!-- Content related to the category goes here -->
+      </div>
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-divider class="bottom-divider"></mat-divider>
