@@ -7,6 +7,8 @@ import { SignupModule } from './signup/signup.module';
 import { CommonUtilsModule } from './common-utils/common-utils.module';
 import { HomepageComponent } from './dashboard/homepage/homepage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MasterLayoutModule } from './master-layout/master-layout.module';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     SignupModule,
     CommonUtilsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MasterLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

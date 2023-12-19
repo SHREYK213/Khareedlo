@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MasterLayoutModule } from './master-layout/master-layout.module';
+
 
 const routes: Routes = [
 
   {
     path: "",
     loadChildren: () =>
-      import("./dashboard/dashboard.module").then((m) => m.DashboardModule),
+      import("./master-layout/master-layout.module").then((m) => m.MasterLayoutModule),
   },
 ];
 
