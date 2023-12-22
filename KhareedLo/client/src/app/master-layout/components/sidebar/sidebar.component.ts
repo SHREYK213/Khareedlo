@@ -1,19 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent {
-  isSidebarOpen: boolean = false;
-
+export class SidebarComponent implements OnChanges{
   constructor() { }
+  @Input() isSidebarOpen!: boolean;
+  @Output() toggleSidebarEvent = new EventEmitter<void>();
 
-  toggleSidebar() {
-    console.log('open');
-    
-    this.isSidebarOpen = !this.isSidebarOpen;
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("is it open?",this.isSidebarOpen);
   }
-
+  toggleSidebar() {
+    console.log('called from topbar comp');
+    this.isSidebarOpen = !this.isSidebarOpen;
+    this.toggleSidebarEvent.emit();
+  }
 }

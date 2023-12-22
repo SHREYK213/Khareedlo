@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./master-layout.component.scss']
 })
 export class MasterLayoutComponent {
+  isSidebarOpen = false;
 
+  toggleSidebar() {
+    console.log('master layout component');
+    
+    this.isSidebarOpen = !this.isSidebarOpen;
+    console.log(this.isSidebarOpen);
+
+  }
 }

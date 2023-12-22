@@ -1,3 +1,5 @@
+@import '../../../../styles/scss/variable.scss';
+
 .tool-bar-spacer {
   flex: 1 1 auto;
 }
@@ -6,11 +8,11 @@
 }
 .topbar-title {
   font-size: 25px;
-  font-family: "NovaSquare";
+  font-family: $default-font;
   margin-left: 1rem;
 }
 .mat-toolbar {
-  background-color: #0d67b5;
+  background-color: $primary-color;
 }
 
 .a-tag {
@@ -25,7 +27,7 @@
   margin-right: 1rem;
 }
 .login-btn {
-  color: #0d67b5 !important;
+  color: $primary-color !important;
 }
 
 .lower-navbar {
@@ -36,7 +38,8 @@
   height: 2rem;
   font-size: 14px;
   background-color: white;
-  color: #0d67b5;
+  color: $primary-color;
+  font-family: $default-font;
 }
 .mid-divider {
   border-color: grey;
@@ -60,6 +63,7 @@
   margin-top: 1rem;
 }
 .expand_more_icon {
+  margin-top: 5%;
   color: rgb(170, 170, 170);
 }
 .category {
@@ -69,4 +73,7 @@
 .expand-icon-class {
   font-size: 11px;
   margin-top: 0.5rem;
+}
+.expand-icon-class:hover{
+background-color: transparent;
 }

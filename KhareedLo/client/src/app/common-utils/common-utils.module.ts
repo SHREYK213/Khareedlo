@@ -4,6 +4,8 @@ import { CommonUtilsRoutingModule } from './common-utils-routing.module';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { MatIconModule } from '@angular/material/icon';
 import {ReactiveFormsModule} from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -11,15 +13,18 @@ import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     SearchBarComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
     CommonUtilsRoutingModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule
   ],
 exports:[
-  SearchBarComponent
+  SearchBarComponent,
+  ProfileComponent
 ]
 })
 export class CommonUtilsModule { }

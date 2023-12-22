@@ -8,7 +8,18 @@
         srcset=""
       />
     </a>
-    <app-sidebar></app-sidebar>
+    <div>
+  <button
+    mat-icon-button
+    class="toolbar-icon"
+    aria-label="icon-button with menu icon"
+    (click)="toggleSidebar()"
+    [hidden]="isSidebarOpen"
+  >
+    <mat-icon class="primary">menu</mat-icon>
+  </button>
+  
+</div>
     <div class="topbar-title">
       <span>KhareedLo</span>
     </div>
@@ -42,7 +53,7 @@
   <mat-toolbar-row class="lower-navbar">
     <span *ngFor="let category of categories" class="category">
       <h1>{{ category.name }}</h1>
-      <button
+      <div
         mat-icon-button
         aria-label="expand_more"
         class="expand_more_icon"
@@ -51,7 +62,7 @@
         <mat-icon class="expand-icon-class">{{
           category.expanded ? "expand_less" : "expand_more"
         }}</mat-icon>
-      </button>
+      </div>
       <div *ngIf="category.expanded">
         <!-- Content related to the category goes here -->
       </div>

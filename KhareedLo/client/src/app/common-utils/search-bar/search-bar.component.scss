@@ -1,3 +1,6 @@
+@import "../../../styles/scss/variable.scss";
+
+
 .search-filter-container {
   width: 100%;
   display: flex;
@@ -64,6 +67,6 @@ input:focus{
   height: 0 !important;
 }
 mat-icon{
-color: #0d67b5 !important
+color: $primary-color !important
 }
 

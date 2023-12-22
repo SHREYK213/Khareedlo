@@ -13,7 +13,7 @@ import { MasterLayoutModule } from './master-layout/master-layout.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent
+    HomepageComponent,
   ],
   imports: [
     BrowserModule,
