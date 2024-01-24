@@ -15,4 +15,7 @@ export class SearchBarComponent {
       searchInput: ['']
     });
   }
+  clearSearch(){
+    this.searchForm.reset()
+  }
 }

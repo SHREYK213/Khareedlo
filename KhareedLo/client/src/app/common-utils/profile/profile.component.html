@@ -1,12 +1,12 @@
-<div class="pofile">
+<div class="profile">
   <div class="profile-pic">
-      <button
-          mat-icon-button
-          class="account_circle"
-          aria-label="icon-button with close icon"
-      >
-          <mat-icon class="primary-btn large-icon">account_circle</mat-icon>
-      </button>
+    <div
+        mat-button
+        disableRipple
+        class="account_circle"
+    >
+        <img class="profile-pic-img" src="../../../assets/img/profile-user.png" alt="profile-pic">
+  </div>
   </div>
   <div class="profile-section" *ngFor="let name of names">{{name.name}}</div>
 </div>

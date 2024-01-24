@@ -13,4 +13,11 @@
     .primary-btn{
         color:$primary-color;
     }
+    .profile-section{
+        display: flex;
+        justify-content: space-between;
+        .close-icon{
+            margin-top: 1.2rem;
+        }
+    }
 }

@@ -4,7 +4,14 @@ import { MasterLayoutModule } from './master-layout/master-layout.module';
 
 
 const routes: Routes = [
-
+  {
+    path: "",redirectTo: "", pathMatch: "full"
+  },
+  {
+    path: "login",
+    loadChildren: () =>
+      import("./signup/signup.module").then((m) => m.SignupModule),
+  },
   {
     path: "",
     loadChildren: () =>

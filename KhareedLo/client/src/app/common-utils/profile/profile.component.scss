@@ -1,9 +1,19 @@
-.profile{
-    .account_circle{
-    font-size: 30px;
+.profile {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+  
+    .profile-pic {
+      margin-right: 0.5rem;
+        .profile-pic-img {
+
+          width: 50px;
+          height: 50px;
+          margin-left: 0.5rem;
+        }
+      // }
     }
-    .large-icon {
-        font-size: 50px; 
-    }
-    
+}
+.profile-section{
+    font-size: 20px
 }

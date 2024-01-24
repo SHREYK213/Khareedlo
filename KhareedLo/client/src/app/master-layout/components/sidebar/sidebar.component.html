@@ -1,14 +1,16 @@
 <mat-sidenav-container class="sidebar-container">
     <mat-sidenav class="sidebar" mode="side" opened={{isSidebarOpen}}>
-      <app-profile></app-profile>
-      <button
-      mat-icon-button
-      class="close-icon"
-      aria-label="icon-button with close icon"
-      (click)="toggleSidebar()"
-      >
-      <mat-icon class="primary-btn">close</mat-icon>
-    </button>
+      <div class="profile-section">
+        <app-profile></app-profile>
+        <button
+        mat-icon-button
+        class="close-icon"
+        aria-label="icon-button with close icon"
+        (click)="toggleSidebar()"
+        >
+        <mat-icon class="primary-btn">close</mat-icon>
+      </button>
+      </div>
       <mat-nav-list>
         <a mat-list-item routerLink="/">Home</a>
         <a mat-list-item routerLink="/products">Products</a>

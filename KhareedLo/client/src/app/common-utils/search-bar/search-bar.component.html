@@ -15,12 +15,14 @@
             class="search-filter-container-input"
             style="border: none !important;"
             formControlName="searchInput"
-            placeholder="Search"
+            placeholder="Search..."
             maxlength="25"
+            autofocus="true"
           />
           <mat-icon
             class="clear"
             matSuffix
+            (click)="clearSearch()"
             >clear</mat-icon
           >
         </div>
