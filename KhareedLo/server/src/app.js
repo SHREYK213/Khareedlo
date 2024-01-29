@@ -15,8 +15,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Uncomment if you need CORS
-// const cors = require('cors');
-// app.use(cors());
+const cors = require('cors');
+app.use(cors());
 
 // Sync Sequelize models with the database
 db.sequelize.sync({ force: false }).then(() => {

@@ -1,5 +1,3 @@
-// models/formModel.js
-
 module.exports = (sequelize, DataTypes) => {
   const Form = sequelize.define("form", {
     name: {

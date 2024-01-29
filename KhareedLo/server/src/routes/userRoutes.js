@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const userAuth = require("../middleware/userAuth.js");
 const userController = require('../controllers/userController.js')
 const{ authenticateToken } = require('../middleware/userAuth.js')
-const { register,login} = userController
+const { register,login } = userController
 
 
 const router = express.Router();
