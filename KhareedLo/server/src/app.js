@@ -4,6 +4,7 @@ const dotenv = require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/userRoutes.js');
 const db = require('./models');
+const formRoutes = require('./routes/formRoutes.js');
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -26,6 +27,8 @@ db.sequelize.sync({ force: false }).then(() => {
 
 // Use routes defined in userRoutes.js
 app.use('/api/users', userRoutes);
+
+app.use('/api/forms', formRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
