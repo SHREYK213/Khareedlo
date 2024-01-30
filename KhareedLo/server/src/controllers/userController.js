@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const db = require("../models");
 const jwt = require("jsonwebtoken");
 const otpMiddleware = require("../middleware/otp");
-const sendMail = require("../utils/email/email");
+const {sendMail} = require("../utils/email/email");
 
 const Users = db.users;
 
@@ -17,17 +17,27 @@ const register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    const ogOtp = otpMiddleware.generateOTP();
+    const otp = ogOtp;  // Store plain OTP
+    const otpExpiration = otpMiddleware.setOTPExpiration();
+    
+
     const data = {
       name,
       email,
       phone_number,
       date_of_birth,
       password_hash: hashedPassword,
+      otp,
+      otpExpiration,
     };
 
     const user = await Users.create(data);
 
     if (user) {
+      // Send OTP via email or SMS
+      sendMail(user.email, `Welcome to KhareedLo ${user.name}`, `Your OTP is: ${ogOtp}`);
+
       const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);
 
       res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true });
@@ -44,6 +54,8 @@ const register = async (req, res) => {
     return res.status(500).send("Internal Server Error");
   }
 };
+
+
 
 const login = async (req, res) => {
   try {

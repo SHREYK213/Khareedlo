@@ -41,8 +41,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      otp: {
+        type:DataTypes.STRING,
+        default:null
+      },
+      otpExpiration: {
+        type:DataTypes.STRING,
+        default:null
+      }
     }, { timestamps: true });
   
     return Users;
   };
-  
