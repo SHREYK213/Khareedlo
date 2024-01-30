@@ -15,12 +15,13 @@ const setOTPExpiration = () => {
 };
 
 
-const verifyOTP = (otp, storedOTP, expiration) => {
-  return otp == storedOTP && new Date() < new Date(expiration);
+const verifyAuthOTP = async (otp, storedHashedOTP, expiration) => {
+  const isOtpValid = await bcrypt.compare(otp, storedHashedOTP);
+  return isOtpValid && new Date() < new Date(expiration);
 };
 
 module.exports = {
   generateOTP,
   setOTPExpiration,
-  verifyOTP,
+  verifyAuthOTP,
 };

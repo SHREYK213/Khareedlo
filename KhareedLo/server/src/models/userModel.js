@@ -1,4 +1,5 @@
 // models/userModel.js
+const bcrypt = require("bcrypt");
 
 module.exports = (sequelize, DataTypes) => {
     const Users = sequelize.define('users', {
@@ -48,8 +49,17 @@ module.exports = (sequelize, DataTypes) => {
       otpExpiration: {
         type:DataTypes.STRING,
         default:null
+      },
+      isVerified: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
       }
     }, { timestamps: true });
-  
+
+    Users.beforeCreate(async (user) => {
+      if (user.otp) {
+          user.otp = await bcrypt.hash(user.otp, 10);
+      }
+  });
     return Users;
   };

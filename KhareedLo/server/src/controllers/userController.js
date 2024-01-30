@@ -77,19 +77,20 @@ const login = async (req, res) => {
       return res.status(401).send("Invalid email or password");
     }
 
-    if (user) {
-      const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);
-
-      // Set token in cookie (optional)
-      res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true });
-
-      console.log("User logged in:", JSON.stringify(user, null, 2));
-      console.log("New Token:", token);
-
-      return res.status(200).send({ user, token });
-    } else {
-      return res.status(401).send("Invalid email or password");
+    if (!user.isVerified) {
+      return res.status(401).send("Account not verified. Please check your email for verification instructions.");
     }
+    console.log("User", JSON.stringify(user, null, 2));
+
+    const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);
+
+    // Set token in cookie (optional)
+    res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true });
+
+    console.log("User logged in:", JSON.stringify(user, null, 2));
+    console.log("New Token:", token);
+
+    return res.status(200).send({ user, token });
   } catch (error) {
     console.error("Error during login:", error.message);
     return res.status(500).send("Internal Server Error");

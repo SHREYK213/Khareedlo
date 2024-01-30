@@ -2,7 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const userAuth = require("../middleware/userAuth.js");
 const userController = require('../controllers/userController.js')
-const{ authenticateToken } = require('../middleware/userAuth.js');
+const{ authenticateToken} = require('../middleware/userAuth.js');
 const { verifyOtp } = require("../controllers/otpController.js");
 const { register,login } = userController
 
