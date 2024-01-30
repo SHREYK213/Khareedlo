@@ -14,7 +14,7 @@ router.post("/login", login);
 router.post("/otpVerify", verifyOtp);
 
 // Protected route (example usage of authentication middleware)
-router.get("/protected", authenticateToken, (req, res) => {
+router.get("/protected", (req, res) => {
   res.status(200).send(`Hello ${req.user.name}! This is a protected route.`);
 });
 
