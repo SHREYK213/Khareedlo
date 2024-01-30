@@ -10,7 +10,6 @@ const register = async (req, res) => {
   try {
     const { name, email, phone_number, date_of_birth, password } = req.body;
 
-    // Validate required fields
     if (!name || !email || !password) {
       return res.status(400).send("Name, email, and password are required");
     }
@@ -20,8 +19,6 @@ const register = async (req, res) => {
     const ogOtp = otpMiddleware.generateOTP();
     const otp = ogOtp;  // Store plain OTP
     const otpExpiration = otpMiddleware.setOTPExpiration();
-    
-
     const data = {
       name,
       email,
@@ -35,7 +32,6 @@ const register = async (req, res) => {
     const user = await Users.create(data);
 
     if (user) {
-      // Send OTP via email or SMS
       sendMail(user.email, `Welcome to KhareedLo ${user.name}`, `Your OTP is: ${ogOtp}`);
 
       const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);

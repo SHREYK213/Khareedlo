@@ -16,7 +16,6 @@ const setOTPExpiration = () => {
 
 
 const verifyOTP = (otp, storedOTP, expiration) => {
-  // Check if OTP matches and is not expired
   return otp == storedOTP && new Date() < new Date(expiration);
 };
 

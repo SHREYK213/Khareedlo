@@ -9,17 +9,17 @@ const saveUser = async (req, res, next) => {
     try {
         console.log(req.body.name);
         console.log(req.body.email);
-        const userName = await Users.findOne({
-            where: {
-                name: req.body.name
-            }
-        });
-        console.log(req.body.name);
+        // const userName = await Users.findOne({
+        //     where: {
+        //         name: req.body.name
+        //     }
+        // });
+        // console.log(req.body.name);
 
-        if (userName) {
-            console.log(`User with name ${req.body.name} already exists.`);
-            return res.status(409).send("User already exists");
-        }
+        // if (userName) {
+        //     console.log(`User with name ${req.body.name} already exists.`);
+        //     return res.status(409).send("User already exists");
+        // }
 
         const email = await Users.findOne({
             where: {

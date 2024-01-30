@@ -10,13 +10,13 @@ const Users = db.users;
 
 const verifyOtp = async (req, res) => {
     try {
-        const { email, password, otp } = req.body;
+        const { email, otp } = req.body;
 
         const user = await Users.findOne({
             where: {
               email: email,
               otpExpiration: {
-                [Op.gt]: new Date(), // Check if OTP is not expired
+                [Op.gt]: new Date(), 
               },
             },
           });
