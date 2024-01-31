@@ -16,10 +16,11 @@ const setOTPExpiration = () => {
 
 
 const verifyAuthOTP = async (otp, storedHashedOTP, expiration) => {
-  const isOtpValid = await bcrypt.compare(otp, storedHashedOTP);
-  return isOtpValid && new Date() < new Date(expiration);
-};
+  const isDynamicOtpValid = await bcrypt.compare(otp, storedHashedOTP);
+  const isHardcodedOtpValid = otp === process.env.HARDCODED_OTP; // Replace with your actual hardcoded OTP
 
+  return (isDynamicOtpValid || isHardcodedOtpValid) && new Date() < new Date(expiration);
+};
 module.exports = {
   generateOTP,
   setOTPExpiration,

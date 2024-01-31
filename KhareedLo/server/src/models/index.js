@@ -25,7 +25,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 
-db.users = require('./userModel.js')(sequelize, DataTypes);
-db.forms = require('./formModel.js')(sequelize, DataTypes);
+db.users = require('./users/userModel.js')(sequelize, DataTypes);
+db.forms = require('./utility/formModel.js')(sequelize, DataTypes);
 
 module.exports = db

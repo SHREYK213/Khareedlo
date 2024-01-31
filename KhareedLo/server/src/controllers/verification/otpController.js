@@ -1,8 +1,8 @@
 // otpController.js
 const bcrypt = require("bcrypt");
-const db = require("../models");
+const db = require("../../models");
 const jwt = require("jsonwebtoken");
-const otpMiddleware = require("../middleware/otp");
+const otpMiddleware = require("../../middleware/verification/otp");
 const { Op } = require("sequelize");
 
 

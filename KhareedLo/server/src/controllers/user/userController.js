@@ -1,8 +1,10 @@
 const bcrypt = require("bcrypt");
-const db = require("../models");
+const db = require("../../models");
 const jwt = require("jsonwebtoken");
-const otpMiddleware = require("../middleware/otp");
-const {sendMail} = require("../utils/email/email");
+const otpMiddleware = require("../../middleware/verification/otp");
+const {sendMail} = require("../../utils/email/email");
+const { signToken } = require("../../middleware/authorization/auth");
+
 
 const Users = db.users;
 
@@ -34,14 +36,14 @@ const register = async (req, res) => {
     if (user) {
       sendMail(user.email, `Welcome to KhareedLo ${user.name}`, `Your OTP is: ${ogOtp}`);
 
-      const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);
+      // const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);
 
-      res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true });
+      // res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true });
 
       console.log("User", JSON.stringify(user, null, 2));
-      console.log("Token", token);
+      // console.log("Token", token);
 
-      return res.status(201).send({ user, token });
+      return res.status(201).send("Registration Successful, Please check your email for verification.");
     } else {
       return res.status(409).send("Details are not correct");
     }
@@ -50,8 +52,6 @@ const register = async (req, res) => {
     return res.status(500).send("Internal Server Error");
   }
 };
-
-
 
 const login = async (req, res) => {
   try {
@@ -78,19 +78,18 @@ const login = async (req, res) => {
     }
 
     if (!user.isVerified) {
-      return res.status(401).send("Account not verified. Please check your email for verification instructions.");
+      return res
+        .status(401)
+        .send(
+          "Account not verified. Please check your email for verification instructions."
+        );
     }
-    console.log("User", JSON.stringify(user, null, 2));
 
-    const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);
+    // Generate a new access token using the signToken function
+    const newToken = await signToken({ id: user.id });
+    console.log("New Token:", newToken);
 
-    // Set token in cookie (optional)
-    res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true });
-
-    console.log("User logged in:", JSON.stringify(user, null, 2));
-    console.log("New Token:", token);
-
-    return res.status(200).send({ user, token });
+    return res.status(200).send({ user, token: newToken.accessToken });
   } catch (error) {
     console.error("Error during login:", error.message);
     return res.status(500).send("Internal Server Error");

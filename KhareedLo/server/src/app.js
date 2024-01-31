@@ -2,9 +2,9 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config();
 const cookieParser = require('cookie-parser');
-const userRoutes = require('./routes/userRoutes.js');
+const userRoutes = require('./routes/user/userRoutes.js');
 const db = require('./models');
-const formRoutes = require('./routes/formRoutes.js');
+const formRoutes = require('./routes/utility/formRoutes.js');
 
 const port = process.env.PORT || 3000;
 const app = express();
