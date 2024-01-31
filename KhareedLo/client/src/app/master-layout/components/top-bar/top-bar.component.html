@@ -1,71 +1,37 @@
-<mat-toolbar color="primary" class="mat-toolbar">
-  <mat-toolbar-row>
-    <a class="a-tag" routerLink="/">
-      <img
-        class="logo"
-        src="../../../assets/img/logo.png"
-        alt="logo"
-        srcset=""
-      />
-    </a>
-    <div>
-  <button
-    mat-icon-button
-    class="toolbar-icon"
-    aria-label="icon-button with menu icon"
-    (click)="toggleSidebar()"
-    [hidden]="isSidebarOpen"
-  >
-    <mat-icon class="primary">menu</mat-icon>
+<mat-toolbar>
+    <mat-toolbar-row class="top-row">
+      <button mat-icon-button class="menu-button" (click)="menuOpen()" [hidden]=isSidebarOpen>
+        <mat-icon class="menu-icon">menu</mat-icon>
+    </button>
+<a class="logo" routerLink="/">
+    <img src="assets/images/Yellow_E-commerce_Shop_Bag_Store_Logo.png" alt="">
+</a>
+
+<span class="title">KhareedLo</span>
+<span class="spacer-left"></span>
+<app-search-bar></app-search-bar>
+<span class="spacer-right"></span>
+<div class="top-bar-right">
+<button mat-stroked-button class="login-button" routerLink="signup/register">
+    Login/Register
   </button>
-  
+<button mat-icon-button class="favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="shopping-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
 </div>
-    <div class="topbar-title">
-      <span>KhareedLo</span>
-    </div>
-    <span class="search-bar-spacer"></span>
-    
-    <app-search-bar></app-search-bar>
-
-    <span class="tool-bar-spacer"></span>
-
-    <!-- Login button -->
-    <span class="login-span">
-      <button mat-raised-button class="login-btn">Login</button>
-    </span>
-    <!-- fav and cart button -->
-    <span class="fav-span">
-      <button mat-icon-button aria-label="favorite" class="favorite_icon">
-        <mat-icon>favorite_icon</mat-icon>
-      </button>
-    </span>
-    <span class="cart-span">
-      <button
-        mat-icon-button
-        aria-label="shopping_cart"
-        class="shopping_cart_icon"
-      >
-        <mat-icon>shopping_cart</mat-icon>
-      </button>
-    </span>
-  </mat-toolbar-row>
-  <!-- <mat-divider class="mid-divider"></mat-divider>
-  <mat-toolbar-row class="lower-navbar">
-    <span *ngFor="let category of categories" class="category">
-      <h1>{{ category.name }}</h1>
-      <div
-        mat-icon-button
-        aria-label="expand_more"
-        class="expand_more_icon"
-        (click)="toggleCategory(category)"
-      >
-        <mat-icon class="expand-icon-class">{{
-          category.expanded ? "expand_less" : "expand_more"
-        }}</mat-icon>
-      </div>
-      <div *ngIf="category.expanded">
-      </div>
-    </span>
-  </mat-toolbar-row>
+</mat-toolbar-row>
+<!-- <mat-divider class="top-nav-divider"></mat-divider> -->
+<!-- <mat-toolbar-row class="second-row">
+  <span *ngFor="let category of categories" class="category">
+  <h1>{{ category.name }}</h1>
+  <div
+    class="expand-button" (click)="toggleCategory(category)">
+    <mat-icon class="expand-icon">{{ category.expanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+  </div>
+  </span>
+</mat-toolbar-row> -->
+<!-- <mat-divider class="secondary-nav-divider"></mat-divider> -->
 </mat-toolbar>
-<mat-divider class="bottom-divider"></mat-divider> -->

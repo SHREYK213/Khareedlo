@@ -12,8 +12,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$KhareedLo-primary: mat.define-palette(mat.$indigo-palette);
-$KhareedLo-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$KhareedLo-primary: mat.define-palette(mat.$blue-palette,900);
+$KhareedLo-accent: mat.define-palette(mat.$gray-palette,50);
 
 // The warn palette is optional (defaults to red).
 $KhareedLo-warn: mat.define-palette(mat.$red-palette);
@@ -35,10 +35,49 @@ $KhareedLo-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; overflow-x: hidden;
+body{
+  overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
+html, body { height: 100%; overflow-x: hidden;}
+body { margin: 0; font-family: "NovaSquare" }
 @font-face {
   font-family: 'NovaSquare';
-  src: url('./assets/fonts/NovaSquare-Regular.ttf');
+  src: url('./../assets/fonts/NovaSquare-Regular.ttf');
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-mdc-form-field-subscript-wrapper{
+  display: none;
+}
+
+#form-field .mdc-text-field--outlined {
+  --mdc-outlined-text-field-outline-width: 1px;
+  --mdc-outlined-text-field-focus-outline-width: 2px;
+  --mdc-outlined-text-field-container-shape: 26px;
+  --mdc-outlined-text-field-outline-color:rgb(192, 192, 192);
+  --mdc-outlined-text-field-focus-outline-color:rgb(78, 78, 78);
+}
+
+#form-field .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input::placeholder{
+  color: rgb(192, 192, 192);
+}
+#form-field .mat-mdc-select-placeholder{
+  color: rgb(192, 192, 192);
+}
+
+#form-field .mat-mdc-select-arrow{
+  color: rgb(192, 192, 192);
+}
+
+#form-field .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-text-field__input{
+  color: rgb(192, 192, 192);
+}
+
+#form-field .mat-mdc-select-min-line{
+  color: rgb(192, 192, 192);
+}
+

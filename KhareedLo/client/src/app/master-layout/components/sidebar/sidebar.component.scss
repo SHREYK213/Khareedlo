@@ -1,23 +1,28 @@
-@import '../../../../styles/scss/variable.scss';
-.sidebar-container{
+@import "../../../../styles/constans/variables.scss";
+
+.example-container{
     width: 100%;
     height: 100%;
-    box-shadow: 2px 0 8px rgb(0, 0,0,0.2);
-    font-family: $default-font;
-    
-    .sidebar{
-        display: flex;
-        align-items: center;
-        width:200px;
+    box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.2);    
     }
-    .primary-btn{
-        color:$primary-color;
-    }
-    .profile-section{
-        display: flex;
-        justify-content: space-between;
-        .close-icon{
-            margin-top: 1.2rem;
-        }
-    }
+mat-sidenav{
+    width: 250px;
+    // background-color: white;
+    // color: $primary-color !important;
+}
+
+.sidebar-top{
+    display: flex;
+    justify-content: space-between;
+    height: 65px;
+    align-items: center;
+}
+.menu-icon{
+    font-size: 24px;
+    align-self: center;
+    color: $primary-color;
+}
+
+mat-nav-list a {
+    color: $primary-color;
 }

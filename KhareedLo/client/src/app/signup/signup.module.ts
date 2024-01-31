@@ -1,19 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup.component';
+import { LoginComponent } from './login/login.component';
 import { SignupRoutingModule } from './signup-routing.module';
+import { CommonUtilsModule } from '../common-utils/common-utils.module';
+import { RegisterComponent } from './register/register.component';
+import {  MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
+    SignupComponent,
     LoginComponent,
-    SignupComponent
-  ],
+    RegisterComponent    ],
   imports: [
     CommonModule,
-    SignupRoutingModule
-  ]
+    SignupRoutingModule,
+    CommonUtilsModule,
+    MatButtonModule,
+    FormsModule
+]
 })
 export class SignupModule { }

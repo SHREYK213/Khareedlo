@@ -1,0 +1,35 @@
+<mat-card class="signup-form">
+  <div class="main-container">
+  <!-- <div class="logo-container">
+    <img class="logo-img" src="../../../assets/images/Yellow_E-commerce_Shop_Bag_Store_Logo.png" alt="Logo.png">
+  </div> -->
+  <div class="welcome-text-container">
+    <h1 class="welcome-text">{{welcomeVar}}</h1>
+  </div>
+  <div>
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div formArrayName="users">
+    <div *ngFor="let user of users.controls; let i = index" [formGroupName]="i" class="forms-container">
+      <ng-container *ngFor="let key of getUserKeys()">
+        <!-- <mat-label>{{ key | titlecase }}</mat-label> -->
+        <mat-form-field appearance="outline" id="form-field" class="form-field">
+          <ng-container *ngIf="key !== 'gender'">
+          <input matInput [formControlName]="key" [placeholder]=" key | titlecase">
+          </ng-container>
+          <ng-container *ngIf="key === 'gender'">
+            <mat-select [formControlName]="key" [placeholder]=" key | titlecase">
+              <mat-option *ngFor="let option of genderOptions" [value]="option">{{option}}</mat-option>
+            </mat-select>
+          </ng-container>
+        </mat-form-field>
+      </ng-container>
+      <div class="submit-container">
+        <button mat-raised-button class="submit-button">Submit</button> 
+      </div>
+
+    </div>
+  </div>
+</form>
+</div>
+</div>
+</mat-card>

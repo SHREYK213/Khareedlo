@@ -1,21 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MasterLayoutModule } from './master-layout/master-layout.module';
-
 
 const routes: Routes = [
   {
-    path: "",redirectTo: "", pathMatch: "full"
-  },
-  {
-    path: "login",
-    loadChildren: () =>
-      import("./signup/signup.module").then((m) => m.SignupModule),
+    path: "", redirectTo: "", pathMatch: "full"
   },
   {
     path: "",
     loadChildren: () =>
       import("./master-layout/master-layout.module").then((m) => m.MasterLayoutModule),
+  },
+  {
+    path: "signup",
+    loadChildren: () =>
+      import("./signup/signup-routing.module").then((m) => m.SignupRoutingModule),
   },
 ];
 

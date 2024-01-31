@@ -1,23 +1,19 @@
-<mat-sidenav-container class="sidebar-container">
-    <mat-sidenav class="sidebar" mode="side" opened={{isSidebarOpen}}>
-      <div class="profile-section">
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened={{isSidebarOpen}}>
+      <div class="sidebar-top">
         <app-profile></app-profile>
-        <button
-        mat-icon-button
-        class="close-icon"
-        aria-label="icon-button with close icon"
-        (click)="toggleSidebar()"
-        >
-        <mat-icon class="primary-btn">close</mat-icon>
-      </button>
-      </div>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/">Home</a>
-        <a mat-list-item routerLink="/products">Products</a>
-        <a mat-list-item routerLink="/categories">Categories</a>
-      </mat-nav-list>
+          <button mat-icon-button class="menu-button" (click)="menuOpen()">
+            <mat-icon class="menu-icon">close</mat-icon>
+          </button>
+        </div>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/">Home</a>
+          <a mat-list-item routerLink="/products">products</a>
+          <a mat-list-item routerLink="/categories">categories</a>
+        </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content class="main-content">
+
+    <mat-sidenav-content>
       <ng-content></ng-content>
     </mat-sidenav-content>
   </mat-sidenav-container>

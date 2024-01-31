@@ -1,27 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MasterLayoutComponent } from './master-layout.component';
+import { ComponentsComponent } from './components/components.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatDividerModule } from '@angular/material/divider';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {ReactiveFormsModule} from '@angular/forms';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { CommonUtilsModule } from '../common-utils/common-utils.module';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MasterLayoutRoutingModule } from './master-layout-routing.module';
-
-
+import { CommonUtilsModule } from '../common-utils/common-utils.module';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatRippleModule } from '@angular/material/core';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
   declarations: [
     MasterLayoutComponent,
+    ComponentsComponent,
     TopBarComponent,
     SidebarComponent
   ],
@@ -30,15 +30,15 @@ import { MasterLayoutRoutingModule } from './master-layout-routing.module';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatInputModule,
     MatFormFieldModule,
-    MatDividerModule,
-    MatExpansionModule,
-    ReactiveFormsModule,
-    MatSidenavModule,
-    MatListModule,
+    MasterLayoutRoutingModule,
     CommonUtilsModule,
-    MasterLayoutRoutingModule
+    MatSelectModule,
+    MatDividerModule,
+    MatRippleModule,
+    MatSidenavModule,
+    MatCheckboxModule,
+    MatListModule
   ]
 })
 export class MasterLayoutModule { }

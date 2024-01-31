@@ -6,12 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  names = [
-    { name: 'uppi'},
-
+  profileName = [
+    { name: 'UPPI' },
   ];
-
-  toggleCategory(category: any): void {
-    category.expanded = !category.expanded;
-  }
 }

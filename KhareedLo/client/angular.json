@@ -26,11 +26,12 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
+              "src/assets/images/Yellow_E-commerce_Shop_Bag_Store_Logo.png",
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "./src/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -89,11 +90,12 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
+              "src/assets/images/Yellow_E-commerce_Shop_Bag_Store_Logo.png",
               "src/assets"
             ],
             "styles": [
-              "./styles/scss/styles.scss"
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "./src/styles/styles.scss"
             ],
             "scripts": []
           }
@@ -102,6 +104,6 @@
     }
   },
   "cli": {
-    "analytics": "daff0235-bc22-4a65-877a-59c583b94b46"
+    "analytics": false
   }
 }
