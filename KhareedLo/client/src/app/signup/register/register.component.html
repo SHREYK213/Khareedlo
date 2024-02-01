@@ -1,6 +1,14 @@
 <div class="main-container">
     <div class="form-container">
-        <app-signup-form [signupForm]="registerForm" [welcomeVar]="welcome" class="register-form">
+        <app-signup-form 
+        [signupForm]="registerForm" 
+        [welcomeVar]="welcome" 
+        (isNextButtonClicked)="isNextButtonClickedEvent()" 
+        [formButton]="formButton" 
+        (formData)="formSubmitted($event)"
+        (isSubmitButtonClicked)="submitButtonClicked()"
+        [nextButton]="nextButton"
+        class="register-form">
         </app-signup-form>
     </div>
     <div class="register-page-text">

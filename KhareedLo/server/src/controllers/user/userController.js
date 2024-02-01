@@ -43,7 +43,7 @@ const register = async (req, res) => {
       console.log("User", JSON.stringify(user, null, 2));
       // console.log("Token", token);
 
-      return res.status(201).send("Registration Successful, Please check your email for verification.");
+      return res.status(201).json({ message: "Registration Successful, Please check your email for verification.",user });
     } else {
       return res.status(409).send("Details are not correct");
     }

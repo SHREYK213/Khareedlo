@@ -38,7 +38,7 @@ const verifyOtp = async (req, res) => {
       
       if(isOtpValid){
         await Users.update({ isVerified: true }, { where: { id: user.id } });
-        return res.status(200).send("OTP verified");
+        return res.status(200).json({message:"OTP verified"});
       }
       // Clear the OTP in the database after successful verification
       await Users.update({ otp: null, otpExpiration: null }, { where: { id: user.id } });
