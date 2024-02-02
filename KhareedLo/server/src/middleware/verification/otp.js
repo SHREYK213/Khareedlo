@@ -10,7 +10,7 @@ const generateOTP = () => {
 const setOTPExpiration = () => {
   // Set OTP expiration to 2 minutes from now in UTC
   const expiration = new Date();
-  expiration.setUTCMinutes(expiration.getUTCMinutes() + 2);
+  expiration.setUTCMinutes(expiration.getUTCMinutes() + 1);
   return expiration.toISOString();
 };
 

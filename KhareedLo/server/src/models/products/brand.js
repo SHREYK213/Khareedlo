@@ -1,8 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
-    const Users = sequelize.define('brands', {
-      name: {
+    const Brand = sequelize.define('brands', {
+      brand_name: {
         type: DataTypes.STRING,
         allowNull: false,
         required: true,
-      },
-    })}
+      }
+    },{ timestamps: true },
+    )
+    return Brand
+}

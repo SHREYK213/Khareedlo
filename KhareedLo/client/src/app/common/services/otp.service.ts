@@ -14,6 +14,9 @@ export class OtpService {
   verifyOtp(jsonBody: { email: string, otp: string }): Observable<any> {
     return this.http.post(`${this.baseUrl}/otpVerify`, jsonBody);
   }
-  
+
+  resendOtp(jsonBody: { email: string }): Observable<any> {
+    return this.http.post(`${this.baseUrl}/resendOtp`, jsonBody);
+  }
 
 }

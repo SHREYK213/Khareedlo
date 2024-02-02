@@ -4,14 +4,15 @@ const dotenv = require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user/userRoutes.js');
 const db = require('./models');
-const formRoutes = require('./routes/utility/formRoutes.js');
+// const formRoutes = require('./routes/utility/formRoutes.js');
+const routes = require('./routes/routes.js')
 
 const port = process.env.PORT || 3000;
 const app = express();
 
 // Use middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Uncomment if you need CORS
@@ -26,9 +27,13 @@ db.sequelize.sync({ force: false }).then(() => {
 });
 
 // Use routes defined in userRoutes.js
-app.use('/api/users', userRoutes);
+// app.use('/api/users', userRoutes);
 
-app.use('/api/forms', formRoutes);
+// app.use('/api/forms', formRoutes);
+// app.use('/', router)
+app.use('/', routes);
+
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {

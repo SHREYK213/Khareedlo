@@ -1,11 +1,14 @@
-export const otpConfig = {
+  export const otpConfig = {
     allowNumbersOnly: false,
     length: 6,
     isPasswordInput: false,
     disableAutoFocus: false,
     placeholder: '',
     inputStyles: {
-      'width': '50px',
-      'height': '50px'
+      'width': '60px',
+      'height': '60px',
+      'background': 'transparent',
+      'border': '1px solid white',
+      'color' : 'white'
     }
   };

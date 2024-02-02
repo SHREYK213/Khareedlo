@@ -4,7 +4,7 @@ const db = require("../../models");
 const jwt = require("jsonwebtoken");
 const otpMiddleware = require("../../middleware/verification/otp");
 const { Op } = require("sequelize");
-
+const { sendMail } = require("../../utils/email/email");
 
 const Users = db.users;
 
@@ -33,15 +33,14 @@ const verifyOtp = async (req, res) => {
       const isOtpValid = await otpMiddleware.verifyAuthOTP(otp, user.otp, user.otpExpiration);
 
       if (!isOtpValid) {
-          return res.status(401).send("Invalid email, password, or OTP");
+          return res.status(401).send("Invalid OTP");
       }
       
       if(isOtpValid){
         await Users.update({ isVerified: true }, { where: { id: user.id } });
+        await Users.update({ otp: null, otpExpiration: null }, { where: { id: user.id } });
         return res.status(200).json({message:"OTP verified"});
       }
-      // Clear the OTP in the database after successful verification
-      await Users.update({ otp: null, otpExpiration: null }, { where: { id: user.id } });
 
       const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);
 
@@ -58,6 +57,56 @@ const verifyOtp = async (req, res) => {
   }
 };
 
+const resendOtp = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).send("Email is required");
+    }
+
+    let user = await Users.findOne({
+      where: {
+        email: email,
+        isVerified: false, // Ensure the user is not already verified
+      },
+    });
+
+    if (!user) {
+      return res.status(404).send("User not found or already verified");
+    }
+
+    // Generate a new OTP, hash it, and set the expiration
+    const ogOtp = otpMiddleware.generateOTP();
+    const otp = await bcrypt.hash(ogOtp, 10);
+    const otpExpiration = otpMiddleware.setOTPExpiration();
+    const data = {
+      otp,
+      otpExpiration,
+    };
+
+    await Users.update(data, {
+      where: {
+        id: user.id,
+      },
+    });
+
+    // Fetch the updated user data after the update
+    user = await Users.findByPk(user.id);
+
+    if (user) {
+      sendMail(user.email, "Resend OTP", `Your new OTP is: ${ogOtp}`);
+      return res.status(201).json({ message: "New OTP sent for verification" });
+    } else {
+      return res.status(409).send("There was an error while updating user data");
+    }
+  } catch (error) {
+    console.error("Error during OTP resend:", error.message);
+    return res.status(500).send("Internal Server Error");
+  }
+};
+
 module.exports = {
   verifyOtp,
+  resendOtp
 };

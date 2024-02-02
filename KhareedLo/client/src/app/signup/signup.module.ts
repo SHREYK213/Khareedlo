@@ -19,7 +19,8 @@ import { MatCardModule } from '@angular/material/card';
     SignupComponent,
     LoginComponent,
     RegisterComponent,
-    OtpVerificationComponent    ],
+    OtpVerificationComponent
+    ],
   imports: [
     CommonModule,
     SignupRoutingModule,
