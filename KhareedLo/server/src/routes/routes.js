@@ -1,13 +1,13 @@
 const express = require("express");
 const userRoutes = require('../routes/user/userRoutes.js');
 const formRoutes = require('../routes/utility/formRoutes.js');
-const { addBrands } = require("../controllers/product/brandController.js");
+const productRoutes= require("../routes/product/products.js");
 const router = express.Router();
 
 
 
 router.use('/api/users', userRoutes);
 router.use('api/forms', formRoutes);
-router.use('/api/products', addBrands);
+router.use('/api/products', productRoutes);
 
 module.exports = router;

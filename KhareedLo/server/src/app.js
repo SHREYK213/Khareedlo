@@ -4,6 +4,7 @@ const dotenv = require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user/userRoutes.js');
 const db = require('./models');
+require('./database/mongoose')
 // const formRoutes = require('./routes/utility/formRoutes.js');
 const routes = require('./routes/routes.js')
 
@@ -11,6 +12,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 // Use middleware
+app.use(bodyParser.json()); // Parse JSON bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

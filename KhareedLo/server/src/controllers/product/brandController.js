@@ -27,7 +27,17 @@ const addBrands = async (req, res) => {
   }
 };
 
+const getBrands = async (req, res) => {
+    try {
+      const brands = await Brand.findAll();
+      return res.status(200).json({ brands });
+    } catch (error) {
+      console.error("Error while fetching brands:", error.message);
+      return res.status(500).send("Internal Server Error");
+    }
+  };
 
 module.exports = {
-    addBrands
+    addBrands,
+    getBrands
 };
