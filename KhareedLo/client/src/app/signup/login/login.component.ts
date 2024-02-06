@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertMessageService } from 'src/app/common/services/alert-message.service';
 import { FormsService } from 'src/app/common/services/forms.service';
 import { LoginService } from 'src/app/common/services/user/login.service';
 
@@ -21,7 +22,9 @@ export class LoginComponent {
     private fb: FormBuilder,
     private formsService: FormsService,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private alertSvc:AlertMessageService
+
   ) {
     this.loginForm = this.fb.group({
       users: this.fb.array([]),
@@ -53,6 +56,10 @@ export class LoginComponent {
       (error) => {
         // Handle registration error here
         console.error('Login failed:', error);
+        this.alertSvc?.showAlertMessage("error", {
+          message: "Login failed, Wrong credentials",
+          timer: 5000,
+        });
       }
     );
   }

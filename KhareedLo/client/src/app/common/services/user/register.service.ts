@@ -22,4 +22,7 @@ export class RegisterService {
   getStoredEmail(): string {
     return this.storedEmail;
   }
+  getUsers(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + "/getUsers");
+  }
 }

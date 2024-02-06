@@ -7,8 +7,10 @@
         [formButton]="formButton" 
         (formData)="formSubmitted($event)"
         (isSubmitButtonClicked)="submitButtonClicked()"
+        [nextButtonDisabled]="nextButtonDisabled"
         [nextButton]="nextButton"
         class="register-form">
+        <app-alert></app-alert>
         </app-signup-form>
     </div>
     <div class="register-page-text">

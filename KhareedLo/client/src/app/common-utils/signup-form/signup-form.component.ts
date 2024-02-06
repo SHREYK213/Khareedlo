@@ -15,6 +15,7 @@ export class SignupFormComponent {
   @Output() formData = new EventEmitter<any>();
   @Input() formButton!:string;
   @Input() nextButton!:boolean;
+  @Input() nextButtonDisabled!:boolean;
   @Output() isSubmitButtonClicked = new EventEmitter();
 
   get usersFormArray(): FormArray{
@@ -34,6 +35,10 @@ export class SignupFormComponent {
     this.users.removeAt(index);
   }
 
+  isFieldInvalid(field:any):boolean{
+    return field.invalid && (field.dirty || field.touched);
+  }
+
   onSubmit() {
     if (this.signupForm.valid) {
       this.isSubmitButtonClicked.emit();
@@ -49,5 +54,27 @@ export class SignupFormComponent {
 
   nextBtnClicked(){
     this.isNextButtonClicked.emit();  
+  }
+
+  getErrorMessage(field: string): string {
+    const control = this.signupForm.get(field);
+    if (control?.errors) {
+      if (control.errors['required']) {
+        console.log("invalid");
+        
+        return 'This field is required.';
+      }
+      if (control.errors['email']) {
+        return 'Invalid email format.';
+      }
+      if (control.errors['minlength']) {
+        return `Minimum ${control.errors['minlength'].requiredLength} characters required.`;
+      }
+      if (control.errors['maxlength']) {
+        return `Maximum ${control.errors['maxlength'].requiredLength} characters allowed.`;
+      }
+      // Add more error messages for other validation rules as needed
+    }
+    return '';
   }
 }

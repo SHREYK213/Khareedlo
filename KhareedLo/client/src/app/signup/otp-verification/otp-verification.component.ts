@@ -17,6 +17,7 @@ export class OtpVerificationComponent {
   storedEmail!: string;
   @ViewChild('ngOtpInput', { static: false }) ngOtpInput: any;
   submitBtn = false;
+  disableResendOtp! : boolean;
 
   otpConfig = otpConfig;
   errorMessage: string = '';
@@ -54,6 +55,7 @@ export class OtpVerificationComponent {
       this.otpService.resendOtp(jsonBody)
         .subscribe(
           (res) => {
+            this.disableResendOtp = true;
             // Handle successful OTP verification response here
             console.log('OTP resent successfully:', res);
             // this.router.navigateByUrl('signup/login');
@@ -61,6 +63,7 @@ export class OtpVerificationComponent {
             // Perform further actions if needed
           },
           (error) => {
+            this.disableResendOtp = true;
             // Handle OTP verification error here
             console.error('Failed to send OTP:', error);
           }

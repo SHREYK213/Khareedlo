@@ -29,6 +29,6 @@ db.users = require('./users/userModel.js')(sequelize, DataTypes);
 db.forms = require('./utility/formModel.js')(sequelize, DataTypes);
 db.products = require('./products/products.js')(sequelize, DataTypes);
 db.brands = require('./products/brand.js')(sequelize, DataTypes);
-db.categories = require('./products/categories.js')(sequelize, DataTypes);
+db.category = require('./products/categories.js')(sequelize, DataTypes);
 
 module.exports = db

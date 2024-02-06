@@ -14,12 +14,14 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
     SearchBarComponent,
     ProfileComponent,
-    SignupFormComponent  ],
+    SignupFormComponent,
+    AlertComponent  ],
   imports: [
     CommonModule,
     CommonUtilsRoutingModule,
@@ -38,7 +40,8 @@ import {MatTabsModule} from '@angular/material/tabs';
   exports: [
     SearchBarComponent,
     ProfileComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    AlertComponent
   ]
 })
 export class CommonUtilsModule { }

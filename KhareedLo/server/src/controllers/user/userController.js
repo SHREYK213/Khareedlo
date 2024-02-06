@@ -95,7 +95,18 @@ const login = async (req, res) => {
     return res.status(500).send("Internal Server Error");
   }
 };
+
+const getUsers = async (req, res) => {
+  try {
+    const users = await Users.findAll();
+    return res.status(200).json(users);
+  } catch (error) {
+    console.error('Error fetching users:', error.message);
+    return res.status(500).send('Internal Server Error');
+  }
+};
 module.exports = {
   register,
   login,
+  getUsers
 };

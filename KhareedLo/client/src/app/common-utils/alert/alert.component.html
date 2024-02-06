@@ -1,0 +1,32 @@
+<div
+  *ngIf="alertData?.data?.message"
+  [ngClass]="{
+    'alert-msg-container': true,
+    'error-message-container': alertData?.type === 'error',
+    'info-message-container': alertData?.type === 'info',
+    'success-message-container': alertData?.type === 'success',
+    'warning-message-container': alertData?.type === 'warning'
+  }"
+>
+  <h1
+    [ngClass]="{
+      'alert-msg-container__error-message-content': alertData?.type === 'error',
+      'alert-msg-container__info-message-content': alertData?.type === 'info',
+      'alert-msg-container__success-message-content': alertData?.type === 'success',
+      'alert-msg-container__warning-message-content': alertData?.type === 'warning'
+    }"
+  >
+    {{alertData?.data?.message}}
+  </h1>
+
+  <!-- <span *ngIf="alertData?.data?.isButton !== false">
+    <mat-icon
+      [ngClass]="{
+        'alert-msg-container__error-message-content':alertData?.type === 'error',
+        'alert-msg-container__info-message-content': alertData?.type === 'info',
+        'alert-msg-container__success-message-content': alertData?.type === 'success',
+        'alert-msg-container__warning-message-content': alertData?.type === 'warning'
+      }"
+      >{{ alertData?.data?.matIcon || "close" }}</mat-icon>
+  </span> -->
+</div>
