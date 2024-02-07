@@ -30,8 +30,8 @@
         </mat-form-field>
       </ng-container>
       <div class="submit-container">
-        <button mat-raised-button *ngIf="nextButton" [disabled]="signupForm.invalid"  class="submit-button" (click)="nextBtnClicked()">Next</button>
-        <button #submit mat-raised-button *ngIf="!nextButton" class="submit-button" [disabled]="signupForm.invalid" (click)="onSubmit()">Submit</button>
+        <button mat-raised-button *ngIf="nextButton" [disabled]="signupForm.invalid"  class="form-button" (click)="nextBtnClicked()">Next</button>
+        <button #submit mat-raised-button *ngIf="!nextButton" class="form-button" [disabled]="signupForm.invalid" (click)="onSubmit()">Submit</button>
       </div>
     </div>
   </div>

@@ -3,11 +3,12 @@
     display: flex;
     justify-content: flex-end;
     form{
-    border-radius: 18px;
+    border-radius: 40px;
     align-items: center;
     height: 43px;
     display: flex;
-    background-color: #080808;
+    background-color: #121212;
+    border: 1px solid rgb(37 37 37)
     }
     .search-icon{
         display: flex;
@@ -21,7 +22,7 @@
         border: 0;
         outline: 0;
         font-size: 16px;
-        color: #b9b8b8;
+        color: #7c7b7c;
         background-color: transparent !important;
     }
     .cancel-button{
@@ -35,5 +36,5 @@
 }
 
 .mat-icon.mat-primary {
-    --mat-icon-color: grey;
+    --mat-icon-color: #7c7b7c;
 }

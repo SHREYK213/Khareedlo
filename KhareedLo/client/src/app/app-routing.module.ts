@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
+
   {
-    path: "", redirectTo: "", pathMatch: "full"
+    path:'',redirectTo:'dashboard',pathMatch:'full'
   },
   {
-    path: "",
+    path: "dashboard",
     loadChildren: () =>
       import("./master-layout/master-layout.module").then((m) => m.MasterLayoutModule),
   },
   {
     path: "signup",
     loadChildren: () =>
-      import("./signup/signup-routing.module").then((m) => m.SignupRoutingModule),
+    import("./signup/signup-routing.module").then((m) => m.SignupRoutingModule),
   },
+  { path: '**', redirectTo: 'dashboard' }
 ];
 
 @NgModule({

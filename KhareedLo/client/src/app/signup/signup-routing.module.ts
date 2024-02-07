@@ -7,13 +7,14 @@ import { OtpVerificationComponent } from './otp-verification/otp-verification.co
 
 const routes: Routes = [
   {
-    path: "", component: SignupComponent,children: [
-      { path: 'signup/login', component: LoginComponent ,pathMatch:'full'},
-    { path: 'signup/register', component: RegisterComponent ,pathMatch:'full'},
-    { path: 'signup/otp',component:OtpVerificationComponent,pathMatch:'full'},
-    { path: '**', redirectTo: 'login' }
-  ]},
-]
+    path: "", component: SignupComponent, children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'otp', component: OtpVerificationComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: '**', redirectTo: 'login', pathMatch: 'full' },
+    ]
+  },
+];
 
 @NgModule({
   declarations: [],

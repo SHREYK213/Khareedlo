@@ -2,7 +2,8 @@ const bcrypt = require("bcrypt");
 const db = require("../../models");
 const jwt = require("jsonwebtoken");
 
-const Category = db.category;
+const Category = require("../../models/products/category.js");
+
 
 const addCategory = async (req, res) => {
     try {

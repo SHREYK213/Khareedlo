@@ -29,13 +29,13 @@ mat-toolbar{
     align-items: center;
     gap: 20px;
     .login-button{
-        background-color: #080808;
-        color: grey;
-        font-size: 16px;
+        background-color: transparent;
+        color: $secondary-color;
+        font-size: 14px;
         height: 35px;
         width: fit-content;
-        border-radius: 5px;
-        border: 0;
+        border-radius: 40px;
+        border: 1px solid #444444;
         cursor: pointer;
         }
 }
@@ -85,9 +85,32 @@ mat-toolbar{
 }
 
 .favorite-icon{
-    color: rgb(159, 3, 3);
+    color: rgb(211, 210, 210);
+    // border: 1px solid rgb(100, 100, 100);
+    background-color: #212121;
+    height: 40px;
+    width: 40px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    // overflow:hidden
+    .mat-icon{
+        overflow:visible;
+
+    }
 }
 
 .shopping-icon{
-    color:#b9b8b8;
-}
+    color: rgb(211, 210, 210);
+    background-color: #212121;
+    height: 40px;
+    width: 40px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    .mat-icon{
+        overflow:visible;
+
+    }}

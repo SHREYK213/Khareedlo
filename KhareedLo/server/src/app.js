@@ -3,7 +3,11 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user/userRoutes.js');
-const db = require('./models');
+// const db = require('./models');
+const db = require("./models/index.js");
+// const Brand=require("./models/products/brand")
+// const Category=require("./models/products/category.js")
+// const Product=require("./models/products/products.js")
 require('./database/mongoose')
 // const formRoutes = require('./routes/utility/formRoutes.js');
 const routes = require('./routes/routes.js')
@@ -22,7 +26,7 @@ const cors = require('cors');
 app.use(cors());
 
 // Sync Sequelize models with the database
-db.sequelize.sync({ force: false }).then(() => {
+db.sync({ alter : false }).then(() => {
   console.log("Database is synchronized");
 }).catch(err => {
   console.error("Error synchronizing database:", err);

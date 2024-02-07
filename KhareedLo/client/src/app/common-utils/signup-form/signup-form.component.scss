@@ -1,96 +1,95 @@
+@import "../../../styles/constans/variables.scss";
 .forms-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  height: 414px;
-  overflow-y: auto;
-  margin: 8% 0 0 0;
-  .form-field{
-      width: 84%;
-      border-radius: 8px;
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    height: 414px;
+    overflow-y: auto;
+    margin: 8% 0 0 0;
+    .form-field{
+        width: 84%;
+        border-radius: 8px;
+    }
 }
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-  overflow: auto;
-}
-
-::-webkit-scrollbar-thumb {
-  background:  white;    
-  border-radius: 30px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-}
-
-::-webkit-scrollbar-thumb:hover{
-  border: 0;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 30px;
-}
-::-webkit-scrollbar-track:hover{
-  background: grey;
-}
-
-.signup-form{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
-.main-container{
-  background-color: #333333;
-  box-shadow: 0px 3.016px 9.326px 0px rgba(0, 0, 0, 0.29), 0px 7.249px 22.411px 0px rgba(0, 0, 0, 0.21), 0px 13.648px 42.198px 0px rgba(0, 0, 0, 0.17), 0px 24.347px 75.273px 0px rgba(0, 0, 0, 0.14), 0px 45.538px 140.791px 0px rgba(0, 0, 0, 0.12), 0px 109px 337px 0px rgba(0, 0, 0, 0.08);
-  max-width: 550px;
-  min-width: 550px;
-  height: 508px;
-  // padding: 60px 0 0 0;
-  border-radius: 11px;
-  .logo-container{
-      display: flex;
-      justify-content: center;
-      // padding-top: 20px;
-      .logo-img{
-          // margin-top: 40px;
-          height: 60px;        
-          width: 60px;
-          align-self: center;
-      }
+    width: 8px;
+    height: 8px;
+    overflow: auto;
   }
-  .welcome-text-container{
-
-      .welcome-text{
-          color: rgb(192, 192, 192);
-          font-size: 30px;
-          text-align: center;
-          font-weight: 600;
-          margin: 20px 0 15px 0;
-      }
+  
+  ::-webkit-scrollbar-thumb {
+    background:  white;    
+    border-radius: 30px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
   }
+  
+  ::-webkit-scrollbar-thumb:hover{
+    border: 0;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 30px;
+  }
+  ::-webkit-scrollbar-track:hover{
+    background: grey;
+  }
+
+  .signup-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+  .main-container{
+    background-color: $primary-background;
+    box-shadow: 0px 3.016px 9.326px 0px #0000004a, 0px 7.249px 22.411px 0px #00000036, 0px 13.648px 42.198px 0px #0000002b, 0px 24.347px 75.273px 0px #00000024, 0px 45.538px 140.791px 0px #0000001f, 0px 109px 337px 0px #00000014;
+    max-width: 550px;
+    min-width: 550px;
+    height: 508px;
+    border-radius: 11px;
+    .logo-container{
+        display: flex;
+        justify-content: center;
+        .logo-img{
+            height: 60px;        
+            width: 60px;
+            align-self: center;
+        }
+    }
+    .welcome-text-container{
+
+        .welcome-text{
+            color: #c0c0c0;
+            font-size: 30px;
+            text-align: center;
+            font-weight: 600;
+            margin: 20px 0 15px 0;
+        }
+    }
 }
-}
+  }
 
 .submit-container{
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  height: 20%;
-  width: 100%;
-  display: flex;
-  .submit-button{
-      min-height: 50px;
-      width: 120px;
-      border-radius: 30px;
-      background-color: #4269E2;
-      color: azure;
-      font-size: 16px;
-      margin: 0 0 4px 0;
-  }
-  .submit-button:disabled{
-    background-color: grey;
-  }
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 20%;
+    width: 100%;
+    display: flex;
+    .form-button{
+        min-height: 50px;
+        width: 120px;
+        border-radius: 30px;
+        background-color: $secondary-color;
+        color: white;
+        font-size: 16px;
+        margin: 0 0 4px 0;
+    }
+    .form-button:disabled{      
+      color: $disabled-color;
+      background-color: $disabled-background-color;
+    }
 }

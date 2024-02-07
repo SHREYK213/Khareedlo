@@ -6,7 +6,7 @@ const otpMiddleware = require("../../middleware/verification/otp");
 const { Op } = require("sequelize");
 const { sendMail } = require("../../utils/email/email");
 
-const Users = db.users;
+const Users = require("../../models/users/userModel");
 
 const verifyOtp = async (req, res) => {
   try {
@@ -37,12 +37,12 @@ const verifyOtp = async (req, res) => {
       }
       
       if(isOtpValid){
-        await Users.update({ isVerified: true }, { where: { id: user.id } });
-        await Users.update({ otp: null, otpExpiration: null }, { where: { id: user.id } });
+        await Users.update({ isVerified: true }, { where: { user_Id: user.user_Id } });
+        await Users.update({ otp: null, otpExpiration: null }, { where: { user_Id: user.user_Id } });
         return res.status(200).json({message:"OTP verified"});
       }
 
-      const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);
+      const token = jwt.sign({ id: user.user_Id }, process.env.SECRET_KEY);
 
       // Set token in cookie (optional)
       res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true });
@@ -87,12 +87,12 @@ const resendOtp = async (req, res) => {
 
     await Users.update(data, {
       where: {
-        id: user.id,
+        user_Id: user.user_Id,
       },
     });
 
     // Fetch the updated user data after the update
-    user = await Users.findByPk(user.id);
+    user = await Users.findByPk(user.user_Id);
 
     if (user) {
       sendMail(user.email, "Resend OTP", `Your new OTP is: ${ogOtp}`);

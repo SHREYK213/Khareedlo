@@ -2,7 +2,7 @@ const express = require("express");
 
 const db = require("../../models");
 
-const Users = db.users;
+const Users = require("../../models/users/userModel");
 
 const saveUser = async (req, res, next) => {
 
