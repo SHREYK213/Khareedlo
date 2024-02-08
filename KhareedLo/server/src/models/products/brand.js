@@ -20,7 +20,7 @@
 // };
 
 // const Products = require('./products');
-
+const Image = require('../images/images');
 const { Sequelize } = require("sequelize");
 const db = require("../index")
 const Brand = db.define('brands', {
@@ -39,4 +39,3 @@ const Brand = db.define('brands', {
 
 // db.sync({ alter: true })
 module.exports = Brand
-
