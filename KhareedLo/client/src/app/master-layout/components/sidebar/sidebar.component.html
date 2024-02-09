@@ -1,12 +1,13 @@
-<mat-sidenav-container class="example-container">
+<mat-sidenav-container class="sidenav">
     <mat-sidenav #sidenav mode="side" opened={{isSidebarOpen}}>
       <div class="sidebar-top">
         <app-profile></app-profile>
-          <button mat-icon-button class="menu-button" (click)="menuOpen()">
+          <!-- <button mat-icon-button class="menu-button" (click)="menuOpen()">
             <mat-icon class="menu-icon">close</mat-icon>
-          </button>
+          </button> -->
         </div>
-        <mat-nav-list>
+        <mat-divider></mat-divider>
+        <mat-nav-list class="sidenav-list">
           <a mat-list-item routerLink="/">Home</a>
           <a mat-list-item routerLink="/products">products</a>
           <a mat-list-item routerLink="/categories">categories</a>

@@ -1,51 +1,51 @@
 
 .alert-msg-container {
-    height: 18px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border-radius: 0.4rem;
-    max-width: 100%;
-    h1 {
-      font-size: 18px;
-      font-weight: 500;
+  height: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  max-width: 100%;
+  h1 {
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+    margin: 0;
+  }
+  &__error-message-content {
+    color: red;
+  }
+  &__info-message-content {
+    color: blue;
+  }
+  &__success-message-content {
+    color: blue;
+  }
+  &__warning-message-content {
+    color: orange;
+  }
+  span {
+    mat-icon {
+      padding-top: 4px;
+      cursor: pointer;
       color: black;
-      margin: 0;
-    }
-    &__error-message-content {
-      color: red;
-    }
-    &__info-message-content {
-      color: blue;
-    }
-    &__success-message-content {
-      color: blue;
-    }
-    &__warning-message-content {
-      color: orange;
-    }
-    span {
-      mat-icon {
-        padding-top: 4px;
-        cursor: pointer;
-        color: black;
-      }
     }
   }
-  
-  .error-message-container {
-    background-color: lightcoral;
-  }
-  
-  .info-message-container {
-    background-color: lightblue;
-  }
-  
-  .success-message-container {
-    background-color: lightgreen;
-  }
-  .warning-message-container {
-    background-color: lightyellow;
-  }
+}
+
+.error-message-container {
+  background-color: lightcoral;
+}
+
+.info-message-container {
+  background-color: lightblue;
+}
+
+.success-message-container {
+  background-color: lightgreen;
+}
+.warning-message-container {
+  background-color: lightyellow;
+}

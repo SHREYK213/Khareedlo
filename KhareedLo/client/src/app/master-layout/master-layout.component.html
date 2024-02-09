@@ -1,14 +1,16 @@
 <!-- master-layout.component.html -->
 <div class="app-container">
-    <div class="side-bar">
-      <app-sidebar [isSidebarOpen]="isSidebarOpen" (toggleSidebarEvent)="toggleSidebar()"></app-sidebar>
-      <div class="top-bar">
-        <app-top-bar (toggleSidebarEvent)="toggleSidebar()"
-        [isSidebarOpen]="isSidebarOpen"></app-top-bar>
-        </div>
+  <div class="top-bar">
+    <app-top-bar (toggleSidebarEvent)="toggleSidebar()"
+    [isSidebarOpen]="isSidebarOpen"></app-top-bar>
     </div>
+    <div class="main-container">
+      <div class="side-bar">
+        <app-sidebar [isSidebarOpen]="isSidebarOpen" (toggleSidebarEvent)="toggleSidebar()"></app-sidebar>
+      </div>
       <div class="body-content">
         <router-outlet></router-outlet>
       </div>
+    </div>
   </div>
   

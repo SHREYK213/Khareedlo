@@ -81,3 +81,46 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: rgb(192, 192, 192);
 }
 
+.sidenav-list{
+  .mat-mdc-list-item-unscoped-content.mdc-list-item__primary-text{
+    color: white;
+  }
+}
+
+.sidenav{
+  .mdc-list-item:hover .mdc-list-item__primary-text{
+    color: white;
+}
+.mdc-list-item:hover{
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 10px;
+}
+}
+
+
+  
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  overflow: auto;
+}
+
+::-webkit-scrollbar-thumb {
+  background:  white;    
+  border-radius: 30px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  border: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 30px;
+}
+::-webkit-scrollbar-track:hover{
+  background: grey;
+}
+

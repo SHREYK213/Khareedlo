@@ -8,11 +8,9 @@
   }
 .main{
   overflow-y: hidden;
-  // height: 100%;
   display: flex;
   flex-direction: column;
   margin-top:30px;
-  // justify-content: center;
 }
 .main::before,
 .main::after {
@@ -26,12 +24,12 @@
 }
 
 .main::before {
-  background-image: url('../../assets/images/e-commerce-line-icons-on-black-background-vector-4927412.jpg');
-  background-size: 550px 550px;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: -2;
-  background-repeat:repeat;
-  // background-size: contain;
+    background-image: url('../../assets/images/e-commerce-line-icons-on-black-background-vector-4927412.jpg');
+    background-size: 550px 550px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -2;
+    background-repeat:repeat;
+    // background-size: contain;
 }
 
 .main::after {
@@ -102,12 +100,11 @@
   border-radius: 100px;
 }
 
-
 .button.b2 {
   border-radius: 22px;
   box-shadow: 0px 3.016px 9.326px 0px #0000004a, 0px 7.249px 22.411px 0px #00000036, 0px 13.648px 42.198px 0px #0000002b, 0px 24.347px 75.273px 0px #00000024, 0px 45.538px 140.791px 0px #0000001f, 0px 109px 337px 0px #00000014;
 
-} 
+}
 
 .checkbox {
   position: relative;

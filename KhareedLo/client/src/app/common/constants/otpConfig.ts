@@ -1,4 +1,4 @@
-  export const otpConfig = {
+export const otpconfig = {
     allowNumbersOnly: false,
     length: 6,
     isPasswordInput: false,

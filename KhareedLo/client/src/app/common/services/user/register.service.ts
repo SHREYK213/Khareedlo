@@ -6,13 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RegisterService {
-  private baseUrl = 'http://localhost:3000/api/users';
-  private storedEmail!: string;
-
   constructor(private http: HttpClient) { }
+  storedEmail!: string;
 
-  registerUser(registerBody: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/register`, registerBody);
+  baseUrl = "http://localhost:3000/api/users";
+
+  postUser(registerBody:any): Observable<any> {
+    console.log("aim colled");
+    
+    return this.http.post(`${this.baseUrl}/register`,registerBody);
   }
 
   setStoredEmail(email: string): void {
@@ -22,6 +24,7 @@ export class RegisterService {
   getStoredEmail(): string {
     return this.storedEmail;
   }
+
   getUsers(): Observable<any> {
     return this.http.get<any>(this.baseUrl + "/getUsers");
   }

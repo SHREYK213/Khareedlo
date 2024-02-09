@@ -7,10 +7,9 @@ import { CommonUtilsModule } from '../common-utils/common-utils.module';
 import { RegisterComponent } from './register/register.component';
 import {  MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
-import { NgOtpInputModule } from  'ng-otp-input';
+import { OtpComponent } from './otp/otp.component';
+import { NgOtpInputModule } from 'ng-otp-input';
 import { MatCardModule } from '@angular/material/card';
-
 
 
 
@@ -19,8 +18,7 @@ import { MatCardModule } from '@angular/material/card';
     SignupComponent,
     LoginComponent,
     RegisterComponent,
-    OtpVerificationComponent
-    ],
+    OtpComponent    ],
   imports: [
     CommonModule,
     SignupRoutingModule,

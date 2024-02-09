@@ -1,11 +1,13 @@
 @import "../../../../styles/constans/variables.scss";
 
-.example-container{
+.sidenav{
     width: 100%;
     height: 100%;
-    box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.2);    
-    }
+    // box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.2);   
+}
 mat-sidenav{
+    padding-left: 20px;
+    background-color: #0f0f0f; 
     width: 250px;
     // background-color: white;
     // color: $primary-color !important;
@@ -13,16 +15,23 @@ mat-sidenav{
 
 .sidebar-top{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     height: 65px;
     align-items: center;
+    background: #141414;
+    border-radius: 26px;
 }
 .menu-icon{
     font-size: 24px;
     align-self: center;
-    color: $primary-color;
+    color: white;
 }
 
-mat-nav-list a {
-    color: $primary-color;
+.mat-drawer-side {
+    border-right-color: rgb(0 0 0 / 0%);
+}
+
+.mat-divider {
+    margin-top: 9px;
+    border-top-color: #524e4e;
 }

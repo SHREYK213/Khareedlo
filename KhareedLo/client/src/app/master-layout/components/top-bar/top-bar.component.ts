@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatRipple } from '@angular/material/core'
+import { RegisterService } from 'src/app/common/services/user/register.service';
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
@@ -9,6 +10,19 @@ export class TopBarComponent {
   isMenuOpened: boolean = false;
   @Output() toggleSidebarEvent = new EventEmitter<void>();
   @Input() isSidebarOpen!: boolean;
+  usersData!: any[];
+  constructor( private registerService:RegisterService){}
+
+  ngOnInit():void{
+    this.getUsers();
+  }
+
+  getUsers():void{
+    this.registerService.getUsers().subscribe((data:any)=>{
+      this.usersData = data;
+      console.log(this.usersData);
+    })
+  }
 
   categories = [
     { name: 'Electronics', expanded: false },

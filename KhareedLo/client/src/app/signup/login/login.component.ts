@@ -8,50 +8,70 @@ import { LoginService } from 'src/app/common/services/user/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  loginForm!: FormGroup;
-  welcome = 'Welcome back';
+  loginForm!:FormGroup;
+  welcome = "Welcome back"
   formsData!: any[];
-  formButton = 'Submit';
-  nextButton!: boolean;
+  formButton = "Submit"
+  nextButton!:boolean;
   accumulatedFormData: any = {};
 
-  constructor(
-    private fb: FormBuilder,
-    private formsService: FormsService,
-    private loginService: LoginService,
-    private router: Router,
+  constructor(private fb:FormBuilder,
+    private formsService:FormsService,
+    private loginService:LoginService,
+    private router:Router,
     private alertSvc:AlertMessageService
-
-  ) {
-    this.loginForm = this.fb.group({
-      users: this.fb.array([]),
-    });
-  }
+    ){
+     this.loginForm = this.fb.group({
+       users:this.fb.array([])
+     });
+   }
 
   ngOnInit(): void {
-    this.nextButton = false;
+    this.nextButton=false;
     // Fetch form data from the service
     this.formsService.getForms().subscribe((data: any) => {
       this.formsData = data;
       this.createLoginForm();
     });
   }
+  
 
-  formSubmitted(data: any) {
-    const transformedData = this.transformFormData(data);
-    console.log('accumulated', this.accumulatedFormData);
-    this.submitClicked();
+  createLoginForm(): void {
+    const formGroupConfig: { [key: string]: any } = {};
+  
+    for (const formField of this.formsData) {
+      // Include only the email and password fields
+      if (formField.name === 'Email' || formField.name === 'Password') {
+        const formControlConfig = formField.inputAllowed ? ['', Validators.required] : '';
+  
+        formGroupConfig[formField.name] = formControlConfig;
+      }
+    }
+  
+    this.loginForm = this.fb.group({
+      users: this.fb.array([this.fb.group(formGroupConfig)])
+    });
   }
 
-  submitClicked() {
-    this.loginService.loginUser(this.accumulatedFormData).subscribe(
+
+   formSubmitted(data:any){
+    const transformedData = this.transformFormData(data);
+    this.submitClicked();
+    console.log('register', transformedData);
+    console.log('accumulated', this.accumulatedFormData);
+  }
+
+  submitClicked(){
+    this.loginService.postUser(this.accumulatedFormData)
+    .subscribe(
       (res) => {
         // Handle successful registration response here
         console.log('Login successful:', res);
         this.router.navigateByUrl('');
+        return res;
       },
       (error) => {
         // Handle registration error here
@@ -61,41 +81,14 @@ export class LoginComponent {
           timer: 5000,
         });
       }
-    );
-  }
+    ); 
+   }
 
-  createLoginForm(): void {
-    const formGroupConfig: { [key: string]: any } = {};
-
-    for (const formField of this.formsData) {
-      // Include only the email and password fields
-      if (formField.name === 'Email' || formField.name === 'Password') {
-        const formControlConfig = formField.inputAllowed
-          ? ['', Validators.required]
-          : '';
-
-        formGroupConfig[formField.name] = formControlConfig;
-      }
-    }
-
-    this.loginForm = this.fb.group({
-      users: this.fb.array([this.fb.group(formGroupConfig)]),
-    });
-  }
-
-  transformFormData(formData: any): void {
+   transformFormData(formData: any): void {
     this.accumulatedFormData = {
       ...this.accumulatedFormData,
-      email:
-        formData.users[0]['Email'] ||
-        formData.users[0]['email'] ||
-        this.accumulatedFormData.email ||
-        '',
-      password:
-        formData.users[0]['Password'] ||
-        formData.users[0]['password'] ||
-        this.accumulatedFormData.password ||
-        '',
-    };
+      email: formData.users[0]['Email'] || formData.users[0]['email'] || this.accumulatedFormData.email || '',
+      password: formData.users[0]['Password'] || formData.users[0]['password'] || this.accumulatedFormData.password || ''};
   }
+  
 }

@@ -9,4 +9,8 @@ export class ProfileComponent {
   profileName = [
     { name: 'UPPI' },
   ];
+
+  openProfile(){
+    console.log('open profile');
+  }
 }
