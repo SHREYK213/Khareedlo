@@ -69,8 +69,8 @@ const Product = db.define('products', {
   }
 });
 
-const Brand = require("./brand")
-const Category = require("./category")
+const Brand = require("./brandModel")
+const Category = require("./categoryModel")
 Brand.hasMany(Product, { foreignKey: 'brand_Id' });
 Product.belongsTo(Brand, { foreignKey: 'brand_Id' }); // Add this association
 

@@ -1,9 +1,9 @@
 const bcrypt = require("bcrypt");
 const db = require("../../models");
 const jwt = require("jsonwebtoken");
-const otpMiddleware = require("../../middleware/verification/otp");
+const otpMiddleware = require("../../middleware/verification/otpMiddleware");
 const {sendMail} = require("../../utils/email/email");
-const { signToken } = require("../../middleware/authorization/auth");
+const { signToken } = require("../../middleware/authorization/authMiddleware");
 
 
 const Users = require("../../models/users/userModel");

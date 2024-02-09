@@ -1,5 +1,5 @@
-const Logo = require('../../models/images/images'); // Assuming your model is in a 'models' directory
-const Image = require('../../models/images/images'); // Assuming your model is in a 'models' directory
+const Logo = require('../../models/images/imageModel'); // Assuming your model is in a 'models' directory
+const Image = require('../../models/images/imageModel'); // Assuming your model is in a 'models' directory
 const mongoose = require('mongoose');
 
 // Controller function to handle file upload

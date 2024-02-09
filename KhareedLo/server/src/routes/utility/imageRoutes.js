@@ -1,5 +1,5 @@
 const express = require('express');
-const uploadMiddleware = require('../../middleware/utility/multer');
+const uploadMiddleware = require('../../middleware/utility/multerMiddleware');
 const {uploadLogo, viewLogo, uploadImage, viewImage} = require('../../controllers/utility/imageController');
 
 const router = express.Router();

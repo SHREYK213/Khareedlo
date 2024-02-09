@@ -20,7 +20,7 @@
 // };
 
 // const Products = require('./products');
-const Image = require('../images/images');
+const Image = require('../images/imageModel');
 const { Sequelize } = require("sequelize");
 const db = require("../index")
 const Brand = db.define('brands', {

@@ -2,7 +2,7 @@
 const bcrypt = require("bcrypt");
 const db = require("../../models");
 const jwt = require("jsonwebtoken");
-const otpMiddleware = require("../../middleware/verification/otp");
+const otpMiddleware = require("../../middleware/verification/otpMiddleware");
 const { Op } = require("sequelize");
 const { sendMail } = require("../../utils/email/email");
 

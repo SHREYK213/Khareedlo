@@ -1,10 +1,10 @@
 const bcrypt = require("bcrypt");
 const db = require("../../models");
 const jwt = require("jsonwebtoken");
-const Image = require("../../models/images/images");
-const Product = require("../../models/products/products");
-const Brand = require("../../models/products/brand");
-const Category = require("../../models/products/category");
+const Image = require("../../models/images/imageModel");
+const Product = require("../../models/products/productModel");
+const Brand = require("../../models/products/brandModel");
+const Category = require("../../models/products/categoryModel");
 
 const addProduct = async (req, res) => {
     try {
