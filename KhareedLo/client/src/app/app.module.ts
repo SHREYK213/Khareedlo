@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { SignupModule } from './signup/signup.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './master-layout/components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent
     ],
   imports: [
     BrowserModule,

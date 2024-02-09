@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MasterLayoutComponent } from './master-layout.component';
-import { ComponentsComponent } from './components/components.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,7 +20,6 @@ import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
     MasterLayoutComponent,
-    ComponentsComponent,
     TopBarComponent,
     SidebarComponent
   ],
