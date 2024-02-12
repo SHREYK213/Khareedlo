@@ -88,15 +88,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .sidenav{
-  .mdc-list-item:hover .mdc-list-item__primary-text{
+  .mdc-list-item:hover .mdc-list-item__primary-text , .mdc-list-item:focus .mdc-list-item__primary-text{
     color: white;
 }
-.mdc-list-item:hover{
+.mdc-list-item:hover , .mdc-list-item:focus{
   background-color: rgba(255,255,255,0.1);
   border-radius: 10px;
 }
 }
-
 
   
 ::-webkit-scrollbar {

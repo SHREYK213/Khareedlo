@@ -15,13 +15,16 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
+import { CategoryListComponent } from './components/category-list/category-list.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 @NgModule({
   declarations: [
     MasterLayoutComponent,
     TopBarComponent,
-    SidebarComponent
+    SidebarComponent,
+    CategoryListComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +39,8 @@ import { MatListModule } from '@angular/material/list';
     MatRippleModule,
     MatSidenavModule,
     MatCheckboxModule,
-    MatListModule
+    MatListModule,
+    MatChipsModule
   ]
 })
 export class MasterLayoutModule { }

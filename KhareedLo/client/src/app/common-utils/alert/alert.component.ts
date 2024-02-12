@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AlertMessageService } from 'src/app/common/services/alert-message.service';
+import { AlertMessageService } from 'src/app/common/services/utils/alert-message.service';
 
 @Component({
   selector: 'app-alert',

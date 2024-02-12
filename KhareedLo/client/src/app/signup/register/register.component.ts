@@ -1,9 +1,9 @@
   import { Component } from '@angular/core';
   import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   import { Router } from '@angular/router';
-import { AlertMessageService } from 'src/app/common/services/alert-message.service';
-  import { FormsService } from 'src/app/common/services/forms.service';
-  import { SignuptogglebuttonService } from 'src/app/common/services/signuptogglebutton.service';
+import { AlertMessageService } from 'src/app/common/services/utils/alert-message.service';
+  import { FormsService } from 'src/app/common/services/utils/forms.service';
+  import { SignuptogglebuttonService } from 'src/app/common/services/utils/signuptogglebutton.service';
   import { RegisterService } from 'src/app/common/services/user/register.service';
 
   @Component({

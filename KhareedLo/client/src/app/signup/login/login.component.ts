@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertMessageService } from 'src/app/common/services/alert-message.service';
-import { FormsService } from 'src/app/common/services/forms.service';
+import { AlertMessageService } from 'src/app/common/services/utils/alert-message.service';
+import { FormsService } from 'src/app/common/services/utils/forms.service';
 import { LoginService } from 'src/app/common/services/user/login.service';
 
 @Component({
