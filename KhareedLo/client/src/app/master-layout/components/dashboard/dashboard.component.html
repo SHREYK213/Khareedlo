@@ -1,0 +1,8 @@
+<div *ngIf="products" class="product">
+    <div *ngFor="let product of products" >
+    <img class="thumbnail" [src]="product.images.length > 0 ? getImageSrc(product.images[0].image.data) : 'assets/images/KhareedLo_logo.jpeg'" alt="Product Image">
+      <p>{{ product.product.product_name }}</p>
+      <!-- <p>{{ product.product.description }}</p> -->
+      <!-- <p>Price: ${{ product.product.price }}</p> -->
+    </div>
+  </div>

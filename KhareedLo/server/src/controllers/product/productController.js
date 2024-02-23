@@ -87,9 +87,43 @@ const addProduct = async (req, res) => {
             return res.status(500).send("Internal Server Error");
         }
     };
+
+    const getAllProductsWithImages = async (req, res) => {
+        try {
+            // Step 1: Fetch all products from PostgreSQL
+            const products = await Product.findAll({
+                include: [
+                    { model: Category, attributes: ['category_Id', 'category_name', 'description'] },
+                    { model: Brand, attributes: ['brand_Id', 'brand_name'] }
+                ]
+            });
+    
+            if (!products || products.length === 0) {
+                return res.status(404).json({ error: "No products found" });
+            }
+    
+            // Step 2: Fetch images for each product from MongoDB
+            const productsWithImages = await Promise.all(products.map(async (product) => {
+                const { product_Id } = product;
+                const images = await Image.find({ product_Id });
+                return {
+                    product: product.toJSON(),
+                    images
+                };
+            }));
+    
+            // Step 3: Send the response
+            res.status(200).json(productsWithImages);
+    
+        } catch (error) {
+            console.error("Error while fetching products:", error.message);
+            return res.status(500).send("Internal Server Error");
+        }
+    };
     
     module.exports = {
         addProduct,
         getProduct,
-        getProductById
+        getProductById,
+        getAllProductsWithImages
     };

@@ -1,0 +1,19 @@
+.thumbnail{
+    height: 120px;
+    width: 150px;
+    border-radius: 8px;
+}
+p{
+    color: white;
+    width: 150px;
+    font-size: 14px;
+}
+
+.product{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    overflow-x: hidden;
+    width: 100%;
+    flex-wrap: wrap;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SignuptogglebuttonService } from '../common/services/signuptogglebutton.service';
+import { SignuptogglebuttonService } from '../common/services/utils/signuptogglebutton.service';
 
 @Component({
   selector: 'app-signup',

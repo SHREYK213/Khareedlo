@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgOtpInputComponent } from 'ng-otp-input';
 import { otpconfig } from 'src/app/common/constants/otpconfig';
-import { FormsService } from 'src/app/common/services/forms.service';
+import { FormsService } from 'src/app/common/services/utils/forms.service';
 import { OtpService } from 'src/app/common/services/user/otp.service';
 import { RegisterService } from 'src/app/common/services/user/register.service';
 @Component({
