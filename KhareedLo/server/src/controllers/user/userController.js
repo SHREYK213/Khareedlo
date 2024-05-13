@@ -89,9 +89,67 @@ const login = async (req, res) => {
     const newToken = await signToken({ id: user.user_Id });
     console.log("New Token:", newToken);
 
-    return res.status(200).send({ user, token: newToken.accessToken });
+    return res.status(200).send({ user, token: newToken.accessToken,refreshToken : newToken.refreshToken });
   } catch (error) {
     console.error("Error during login:", error.message);
+    return res.status(500).send("Internal Server Error");
+  }
+};
+
+const forgotPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return res.status(400).send("Email is required");
+    }
+
+    const user = await Users.findOne({
+      where: {
+        email: email
+      }
+    });
+
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    const ogOtp = otpMiddleware.generateOTP();
+    const otp = ogOtp;
+    const otpExpiration = otpMiddleware.setOTPExpiration();
+
+    const updateOtp = await Users.update(
+      { otp, otpExpiration },
+      { where: { email } }
+    );
+
+    sendMail(user.email, `Hello ${user.name}`, `Your OTP to reset password is: ${ogOtp}`);
+    console.log("User", JSON.stringify(user, null, 2));
+
+    return res.status(201).json({ message: "Password reset link sent. Please check your email.", user });
+    
+  } catch (error) {
+    console.error("Error during forgot password:", error.message);
+    return res.status(500).send("Internal Server Error");
+  }
+};
+
+
+const resetPassword = async (req, res) => {
+  try {
+    const { password, otp, email } = req.body;
+    if (!otp || !password) {
+      return res.status(400).send("OTP and password are required");
+    }
+    const user = await Users.findOne({ where: { otp: otp } });
+    if (!user) {
+      return res.status(404).send("Invalid OTP");
+    }
+    const updatePassword = await user.update({password}, { where: { email } });
+    await user.save();
+
+    return res.status(200).json({ message: "Password reset successfully" });
+    
+  } catch (error) {
+    console.error("Error during reset password:", error.message);
     return res.status(500).send("Internal Server Error");
   }
 };
@@ -108,5 +166,7 @@ const getUsers = async (req, res) => {
 module.exports = {
   register,
   login,
-  getUsers
+  getUsers,
+  forgotPassword,
+  resetPassword
 };

@@ -4,7 +4,7 @@ const userAuth = require("../../middleware/user/userAuthMiddleware.js");
 const userController = require('../../controllers/user/userController.js')
 const{ authenticateToken} = require('../../middleware/user/userAuthMiddleware.js');
 const { verifyOtp, resendOtp } = require("../../controllers/verification/otpController.js");
-const { register,login,getUsers } = userController
+const { register,login,getUsers,forgotPassword,resetPassword } = userController
 
 
 const router = express.Router();
@@ -13,6 +13,8 @@ router.post('/register', userAuth.saveUser, register)
 router.post("/login", login);
 router.post("/otpVerify", verifyOtp);
 router.post('/resendOtp',resendOtp);
+router.post('/forget-password',forgotPassword);
+router.post('/reset-password',resetPassword);
 router.get('/getUsers',getUsers);
 
 // Protected route (example usage of authentication middleware)

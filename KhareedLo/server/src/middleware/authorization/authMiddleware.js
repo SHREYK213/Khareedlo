@@ -2,8 +2,9 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
 const isAuthorized = async (req, res) => {
+  // console.log(req)
   const refreshToken = req.headers["x-refresh-token"];
-  const accessTokenBearer = req.headers["authorization"];
+  const accessTokenBearer = req.headers["authorization"]
   // console.log(accessTokenBearer);
 
   if (!accessTokenBearer || !refreshToken) {
@@ -21,10 +22,11 @@ const isAuthorized = async (req, res) => {
     }
     return jwt.verify(accessToken, process.env.ACCESS_SECRET_KEY , (accessErr) => {
         if(accessErr) {
+          console.log(accessErr);
             //creating a new tokens
             console.log("generating new token")
             const newToken = jwt.sign(decoded, process.env.ACCESS_SECRET_KEY);
-
+            console.log(newToken);
             res.setHeader("Authorization" , `Bearer ${newToken}`);
             res.setHeader("x-refresh-token" , refreshToken);
             
@@ -47,7 +49,6 @@ async function mainAuthorized(req,res,next) {
     }
     
   } catch (error) {
-    // console.log(error);
     res.send(error);
   }
 }
@@ -57,9 +58,8 @@ const signToken = async (data) => {
     const privateKey = process.env.ACCESS_SECRET_KEY;
     const refreshKey = process.env.REFRESH_SECRET_KEY;
 
-    let accessToken = jwt.sign(data, privateKey , {expiresIn : '1m'});
+    let accessToken = jwt.sign(data, privateKey , {expiresIn : '10m'});
     let refreshToken = jwt.sign(data, refreshKey , {expiresIn : '50m'});
-
     let token = {
       accessToken,
       refreshToken,
