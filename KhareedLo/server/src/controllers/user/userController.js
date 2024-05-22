@@ -163,10 +163,26 @@ const getUsers = async (req, res) => {
     return res.status(500).send('Internal Server Error');
   }
 };
+
+const logout = async (req, res) => {
+  try{
+    const { userId } = req.body;
+    const user = await Users.findOne({ where: { user_Id: userId } });
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    await user.update({isLoggedIn:false})
+    return res.status(200).json({ message: "logged out successfully" });
+  } catch (error) {
+    console.error('Error logging out:', error.message);
+    return res.status(500).send('Internal Server Error');
+  }
+}
 module.exports = {
   register,
   login,
   getUsers,
   forgotPassword,
-  resetPassword
+  resetPassword,
+  logout
 };
