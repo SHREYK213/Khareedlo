@@ -2,70 +2,53 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
 const isAuthorized = async (req, res) => {
-  // console.log(req)
   const refreshToken = req.headers["x-refresh-token"];
-  const accessTokenBearer = req.headers["authorization"]
-  // console.log(accessTokenBearer);
+  const accessTokenBearer = req.headers["authorization"];
 
   if (!accessTokenBearer || !refreshToken) {
-    // console.log("helo");
-    throw { message: "Tokens Not Specified!" };
+    return { status: 400, message: "Tokens Not Specified!" };
   }
 
   const accessToken = accessTokenBearer.split(' ')[1];
-  // console.log(accessToken);
-
-
-  return jwt.verify(refreshToken , process.env.REFRESH_SECRET_KEY , (refreshErr,decoded) => {
-    if(refreshErr){
-        throw {message : "User logged Out!"}
+  try {
+    const decodedRefreshToken = jwt.verify(refreshToken, process.env.REFRESH_SECRET_KEY);
+    try {
+      jwt.verify(accessToken, process.env.ACCESS_SECRET_KEY);
+      return { status: 200, decoded: decodedRefreshToken };
+    } catch (accessErr) {
+      console.log("Access token expired, generating new token");
+      const newAccessToken = jwt.sign(decodedRefreshToken, process.env.ACCESS_SECRET_KEY);
+      res.setHeader("Authorization", `Bearer ${newAccessToken}`);
+      res.setHeader("x-refresh-token", refreshToken);
+      return { status: 200, decoded: decodedRefreshToken };
     }
-    return jwt.verify(accessToken, process.env.ACCESS_SECRET_KEY , (accessErr) => {
-        if(accessErr) {
-          console.log(accessErr);
-            //creating a new tokens
-            console.log("generating new token")
-            const newToken = jwt.sign(decoded, process.env.ACCESS_SECRET_KEY);
-            console.log(newToken);
-            res.setHeader("Authorization" , `Bearer ${newToken}`);
-            res.setHeader("x-refresh-token" , refreshToken);
-            
-        }
-
-        res.setHeader("Authorization" , `Bearer ${accessToken}`);
-        res.setHeader("x-refresh-token" , refreshToken);
-        return decoded;
-
-    })
-  })
+  } catch (refreshErr) {
+    return { status: 401, message: "User logged out!" };
+  }
 };
 
-async function mainAuthorized(req,res,next) {
+async function mainAuthorized(req, res, next) {
   try {
-    const decoded = await isAuthorized(req,res);
-    if(decoded){
+    const { status, decoded, message } = await isAuthorized(req, res);
+    if (status === 200) {
       console.log(decoded);
       next();
+    } else {
+      res.status(status).send(message);
     }
-    
   } catch (error) {
-    res.send(error);
+    res.status(500).send("Internal Server Error");
   }
 }
 
 const signToken = async (data) => {
   try {
-    const privateKey = process.env.ACCESS_SECRET_KEY;
-    const refreshKey = process.env.REFRESH_SECRET_KEY;
-
-    let accessToken = jwt.sign(data, privateKey , {expiresIn : '10m'});
-    let refreshToken = jwt.sign(data, refreshKey , {expiresIn : '50m'});
-    let token = {
+    const accessToken = jwt.sign(data, process.env.ACCESS_SECRET_KEY, { expiresIn: '10m' });
+    const refreshToken = jwt.sign(data, process.env.REFRESH_SECRET_KEY, { expiresIn: '50m' });
+    return {
       accessToken,
       refreshToken,
     };
-
-    return token;
   } catch (error) {
     throw { status: 401, message: "Error generating token" };
   }
