@@ -135,11 +135,11 @@ const forgotPassword = async (req, res) => {
 
 const resetPassword = async (req, res) => {
   try {
-    const { password, otp, email } = req.body;
-    if (!otp || !password) {
+    const { password, email } = req.body;
+    if (!password) {
       return res.status(400).send("OTP and password are required");
     }
-    const user = await Users.findOne({ where: { otp: otp } });
+    const user = await Users.findOne({ where: { email } });
     if (!user) {
       return res.status(404).send("Invalid OTP");
     }
