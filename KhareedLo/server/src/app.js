@@ -12,7 +12,7 @@ require('./database/mongoose')
 // const formRoutes = require('./routes/utility/formRoutes.js');
 const routes = require('./routes/routes.js')
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 const app = express();
 
 // Use middleware

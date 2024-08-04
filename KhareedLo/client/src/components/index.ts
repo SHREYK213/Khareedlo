@@ -1,1 +1,2 @@
-export {};
+// components/index.ts
+export * from './common';
